@@ -12,8 +12,8 @@ def init_connection():
         "user":os.getenv("SFUSER"),
         "password":os.getenv("SFPASSWORD"),
         "account":os.getenv("ACCOUNT"),
-        "role":os.getenv("ROLE"),
-        "warehouse":os.getenv("WAREHOUSE"),
+        "role":"ACCOUNTADMIN",
+        "warehouse":"LARGE",
         "database":"IOT_DEMO",
         "schema":"PUBLIC"
     }

@@ -1,5 +1,8 @@
 # Snowpipe IOT Streaming Analytics
+This demo simulates streaming IOT JSON data data landing in AWS S3. The data is then ingested into Snowflake using Snowpipe and visualized using Streamlit.
 
+![Screenshot 1](screenshot_1.png "Screenshot 1")
+![Screenshot 2](screenshot_2.png "Screenshot 2")
 
 ## Create database and stage in your Snowflake account
 Set up your database and stage for your S3 data. Keeping the database called iot_demo and the sage called iot_stage will limit the number of modifications you need to make to the rest of the code.
