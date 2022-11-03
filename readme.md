@@ -13,7 +13,7 @@ create or replace stage iot_stage url = 's3://your-s3-location/'
 ```
 
 ## Add Snowflake Authentiation Info Environemnt Variables
-Replace the values in quotes with your Snowflake credentials.
+Replace the values in quotes with your Snowflake credentials and run the following in your Terminal app.
 ```
     export SFUSER='SNOWFLAKEUSER'
     export SFPASSWORD='SNOWFLAKEPASSWORD'
