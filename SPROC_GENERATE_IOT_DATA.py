@@ -35,7 +35,6 @@ def create_snowpipe_objects(session: Session, stage_location: str):
                     file_format=json;
                 """).collect()
 
-
 def register_stored_procedure(session: Session):
     @sproc(name = 'GENERATE_IOT_DATA'
            , is_permanent = True
