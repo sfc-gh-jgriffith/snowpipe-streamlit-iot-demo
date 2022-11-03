@@ -1,26 +1,16 @@
 # Snowpipe IOT Streaming Analytics
 
 
-## Create Snowpipe Destination Table
-1. Create desitnation table to land the Snowpipe data.
-    ```
-    create table snowpipe_demo.public.iot_raw (
-        json variant,
-        timestamp timestamp_ntz
-    )
-    ```
-1. Create view on top of `iot_raw`:
-    ```
-    create or replace view iot_view as  
-    select 
-        json['SENSOR_ID']::int as sensor_id,
-        json['AMPS']::numeric(38,2) as AMPS,
-        json['T_CELSIUS']::numeric(38,2)as t_celsius,
-        json['WIND_SPEED_MPH']::numeric(38,2) as wind_speed_mph,
-        timestamp
-    from 
-        iot_raw;
-    ```
+## Create database and stage in your Snowflake account
+Set up your database and stage for your S3 data. Keeping the database called iot_demo and the sage called iot_stage will limit the number of modifications you need to make to the rest of the code.
+```
+create or replace database iot_demo;
+
+use schema iot_demo.public;
+
+create or replace stage iot_stage url = 's3://your-s3-location/' 
+    storage_integration = your_s3_integration;
+```
 
 ## Add Snowflake Authentiation Info Environemnt Variables
 Replace the values in quotes with your Snowflake credentials.
@@ -31,18 +21,8 @@ Replace the values in quotes with your Snowflake credentials.
     export ROLE='SYSADMIN'
 ```
 
-## Create database and stage in your Snowflake account
-```
-create or replace database iot_demo;
-
-use schema iot_demo.public;
-
-create or replace stage iot_stage url = 's3://your-s3-location/' 
-    storage_integration = your_s3_integration;
-```
-
 ## Create snowpipe objects
-Run [SPROC_GENERATE_IOT_DATA.py](SPROC_GENERATE_IOT_DATA.py) with your database name and stage name as arguments
+Run [SPROC_GENERATE_IOT_DATA.py](SPROC_GENERATE_IOT_DATA.py) with your database name and stage name as arguments.
 
 This script creates a table, a pipe, and a stored procedure for generating synthetic IOT data.
 ```
