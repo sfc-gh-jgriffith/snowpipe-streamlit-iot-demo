@@ -12,7 +12,7 @@ def init_connection():
         "user":os.getenv("SFUSER"),
         "password":os.getenv("SFPASSWORD"),
         "account":os.getenv("ACCOUNT"),
-        "role":"ACCOUNTADMIN",
+        "role":os.getenv("ROLE"),
         "warehouse":"LARGE",
         "database":"IOT_DEMO",
         "schema":"PUBLIC"
@@ -20,8 +20,6 @@ def init_connection():
     return Session.builder.configs(connection_parameters).create()
 
 session = init_connection()
-
-
 
 st.subheader("Streaming IOT Analytics")
 st.write("Simulated IOT data dropped into S3 and imported to Snowflake automatically by Snowpipe.")

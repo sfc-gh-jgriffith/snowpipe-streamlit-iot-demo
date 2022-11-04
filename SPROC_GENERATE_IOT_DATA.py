@@ -101,7 +101,7 @@ if __name__ == "__main__":
         "password":os.getenv("SFPASSWORD"),
         "account":os.getenv("ACCOUNT"),
         "role":os.getenv("ROLE"),
-        "warehouse":os.getenv("WAREHOUSE"),
+        "warehouse":os.getenv("WAREHOUSE")
     }
     
     session = Session.builder.configs(connection_parameters).create()

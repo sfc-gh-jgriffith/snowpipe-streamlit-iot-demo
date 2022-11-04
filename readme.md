@@ -22,6 +22,7 @@ Replace the values in quotes with your Snowflake credentials and run the followi
     export SFPASSWORD='SNOWFLAKEPASSWORD'
     export ACCOUNT='org.alias'
     export ROLE='SYSADMIN'
+    export WAREHOUSE='WAREHOUSE_NAME'
 ```
 
 ## Create snowpipe objects
